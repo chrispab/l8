@@ -14,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $test = "afffafdadf";
+    $test= substr($test,0,2);
+
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
+    $test = "afffafdadf";
+    $test= substr($test,0,2);
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 

@@ -15,6 +15,10 @@ class CreateCo2SensorReadingsTable extends Migration
     {
         Schema::create('co2_sensor_readings', function (Blueprint $table) {
             $table->id();
+            $table->string('co2',10);
+            $table->string('temperature',10);
+            $table->string('humidity',10);
+            $table->timestamp('sample_time');
             $table->timestamps();
         });
     }

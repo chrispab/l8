@@ -2,11 +2,63 @@ http://localhost/register
 chris@OX7020:~/example-app$ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 sail up
 
+add alias to shell
+https://www.tecmint.com/create-alias-in-linux/
+
+
 chris@OX7020:~/example-app$ sail npm run watch
 
+
+#xdebug
+# https://laravel.com/docs/8.x/sail#debugging-with-xdebug
+#https://blog.levacic.net/2020/12/19/xdebug-3-docker-vs-code-setup-guide-on-ubuntu/
+#in .env file
+
 SAIL_XDEBUG_MODE=on
+
+#example-app_laravel.test_1 (2731ee84de9e)
+#docker inspect -f {{range.NetworkSettings.Networks}}{{.Gateway}}{{end}} <container-name>
+docker inspect -f {{range.NetworkSettings.Networks}}{{.Gateway}}{{end}} example-app_laravel.test_1
 SAIL_XDEBUG_CONFIG=client_host=host.docker.internal
 
 
+
+
+this works:
+I did a sail build --no-cache after adding SAIL_XDEBUG_MODE=develop,debug to .env and then sail up. I ran the Listen for Xdebug command in VS Code, and set the Xdebug helper extension in Chrome to Debug.
+
+==========================
+{
+    "configurations": [
+    {
+        "name": "Listen for Xdebug on Sail docker",
+        "type": "php",
+        "request": "launch",
+        "port": 9003,
+        "pathMappings": {
+            "/var/www/html": "${workspaceFolder}"
+        },
+        // "hostname": "localhost",
+        "xdebugSettings": {
+            "max_data": 65535,
+            "show_hidden": 1,
+            "max_children": 100,
+            "max_depth": 5
+        }
+    }
+    ]
+}
+SAIL_XDEBUG_MODE=develop,debug
+# SAIL_XDEBUG_CONFIG="client_host=172.27.0.1"
+# SAIL_XDEBUG_CONFIG="client_host=host.docker.internal idekey=VSCODE"
+=============================
+I did a sail build --no-cache after adding SAIL_XDEBUG_MODE=develop,debug to .env and then sail up
+
+
+#db models
 sail php artisan make:model Co2SensorReading -m
 
+sail php artisan migrate
+
+
+php artisan make:controller Co2SensorReadingController
