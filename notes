@@ -56,9 +56,9 @@ I did a sail build --no-cache after adding SAIL_XDEBUG_MODE=develop,debug to .en
 
 
 #db models
-sail php artisan make:model Co2SensorReading -m
+sail php artisan make:model SensorReading -m
 
 sail php artisan migrate
 
 
-php artisan make:controller Co2SensorReadingController
+sail php artisan make:controller SensorReadingController

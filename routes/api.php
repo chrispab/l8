@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\SensorReading;
+use App\Http\Controllers\SensorReadingController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,8 +21,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('articles', 'ArticleController@index');
-Route::get('articles/{id}', 'ArticleController@show');
-Route::post('articles', 'ArticleController@store');
-Route::put('articles/{id}', 'ArticleController@update');
-Route::delete('articles/{id}', 'ArticleController@delete');
+// Route::get('/readings', 'SensorReadingController@index');
+Route::get('/readings', [SensorReadingController::class, 'index']);
+
+// Route::get('readings', function() {
+//     // If the Content-Type and Accept headers are set to 'application/json',
+//     // this will return a JSON structure. This will be cleaned up later.
+//     return SensorReading::all();
+// });
+
+Route::get('readings/{id}', [SensorReadingController::class, 'show']);
+Route::post('readings', 'SensorReadingController@store');
+Route::put('readings/{id}', 'SensorReadingController@update');
+Route::delete('readings/{id}', 'SensorReadingController@delete');

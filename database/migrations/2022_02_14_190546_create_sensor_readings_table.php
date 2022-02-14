@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCo2SensorReadingsTable extends Migration
+class CreateSensorReadingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCo2SensorReadingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('co2_sensor_readings', function (Blueprint $table) {
+        Schema::create('sensor_readings', function (Blueprint $table) {
             $table->id();
             $table->string('co2',10);
             $table->string('temperature',10);
@@ -30,6 +30,6 @@ class CreateCo2SensorReadingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('co2_sensor_readings');
+        Schema::dropIfExists('sensor_readings');
     }
 }
