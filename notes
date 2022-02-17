@@ -62,3 +62,9 @@ sail php artisan migrate
 
 
 sail php artisan make:controller SensorReadingController
+
+sail php artisan make:controller Photo2Controller --model=Photo --api
+
+sail php artisan make:controller SensorReadingController --model=SensorReading --api
+
+sail php artisan make:resource SensorReadingResource

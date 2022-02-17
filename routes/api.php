@@ -22,7 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route::get('/readings', 'SensorReadingController@index');
-Route::get('/readings', [SensorReadingController::class, 'index']);
 
 // Route::get('readings', function() {
 //     // If the Content-Type and Accept headers are set to 'application/json',
@@ -30,7 +29,14 @@ Route::get('/readings', [SensorReadingController::class, 'index']);
 //     return SensorReading::all();
 // });
 
-Route::get('readings/{id}', [SensorReadingController::class, 'show']);
-Route::post('readings', 'SensorReadingController@store');
-Route::put('readings/{id}', 'SensorReadingController@update');
-Route::delete('readings/{id}', 'SensorReadingController@delete');
+
+// Route::get('/readings', [SensorReadingController::class, 'index']);
+Route::get('/readings/{sensorReading}', [SensorReadingController::class, 'show']);
+// Route::post('readings', 'SensorReadingController@store');
+// Route::put('readings/{id}', 'SensorReadingController@update');
+// Route::delete('readings/{id}', 'SensorReadingController@delete');
+
+// Route::get('/users/{user}', [UserController::class, 'show']);
+
+
+Route::apiResource('readings', SensorReadingController::class);
