@@ -79,3 +79,10 @@ sail php artisan make:controller Photo2Controller --model=Photo --api
 sail php artisan make:controller SensorReadingController --model=SensorReading --api
 
 sail php artisan make:resource SensorReadingResource
+
+sail php artisan make:controller DataImportController
+
+
+to read last n samples from co2sensor server api and insert into local db
+http://localhost/fetch/n
+

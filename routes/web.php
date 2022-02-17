@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +26,8 @@ Route::get('/dashboard', function () {
     $test= substr($test,0,2);
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/fetch/{NSamples}', [DataImportController::class, 'fetchLastNSamples']);
+Route::get('/fetch', [DataImportController::class, 'fetchLastNSamples']);
 
 require __DIR__.'/auth.php';
