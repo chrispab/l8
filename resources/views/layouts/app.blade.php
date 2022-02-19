@@ -29,7 +29,9 @@
 
             <!-- Page Content -->
             <main class="bg-blue-600">
+                zcontent
                 {{ $slot }}
+                zvcontent
             </main>
         </div>
     </body>

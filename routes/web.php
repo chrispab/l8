@@ -14,18 +14,36 @@ use App\Http\Controllers\DataImportController;
 |
 */
 
-Route::get('/', function () {
-    $test = "afffafdadf";
-    $test= substr($test,0,2);
+// Route::get('/', function () {
+//     // $test = "afffafdadf";
+//     // $test= substr($test,0,2);
+//     $data = ["name" => "Sanjay", "email" => "sanjay@mail.com"];
 
-    return view('welcome');
-});
+//     return view('welcome', $data); // /resources/views/welcome.blade.php
+//     // return view('welcome');
+// });
 
+// # Route for welcome page
+// Route::view("/", "welcome");
+
+// # Route with parameters
+// Route::view("/", "welcome", ["name" => "Sanjay", "email" => "sanjay@mail.com"]);
+
+# Import controller here
+use App\Http\Controllers\Student;
+
+Route::get("/", [Student::class, "welcome"]);
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', function () {
-    $test = "afffafdadf";
-    $test= substr($test,0,2);
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
+
+Route::get('/home', [HomeController::class, 'index']);
+
 
 Route::get('/fetch/{NSamples}', [DataImportController::class, 'fetchLastNSamples']);
 Route::get('/fetch', [DataImportController::class, 'fetchLastNSamples']);
