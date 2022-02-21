@@ -31,8 +31,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // Route::get('/readings', [SensorReadingController::class, 'index']);
+Route::get('/read/lastnhours/{nHours}', [SensorReadingController::class, 'nHours']);
 Route::get('/readings/{sensorReading}', [SensorReadingController::class, 'show']);
-Route::get('/readings/lastNHours/{nHours}', [SensorReadingController::class, 'nHours']);
 
 // Route::post('readings', 'SensorReadingController@store');
 // Route::put('readings/{id}', 'SensorReadingController@update');

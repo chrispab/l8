@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\SensorReading;
 use Illuminate\Http\Request;
 use App\Http\Resources\SensorReadingResource;
+
+use Carbon\Carbon;
+use Ramsey\Uuid\Type\Integer;
+
 class SensorReadingController extends Controller
 {
     /**
@@ -21,9 +25,13 @@ class SensorReadingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function nHours()
+    public function nHours( $nHours)
     {
-        return SensorReading::all();
+        $nHoursReadings = SensorReading::where('sample_time', '>=', Carbon::now()->subHours($nHours)->toDateTimeString())
+               ->orderByDesc('sample_time')
+            //    ->take(10)
+               ->get();
+        return $nHoursReadings;
     }
     /**
      * Store a newly created resource in storage.
