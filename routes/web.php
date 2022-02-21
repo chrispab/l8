@@ -42,6 +42,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/co2', function () {
+    return view('co2');
+})->name('co2');
+
 Route::get('/home', [HomeController::class, 'index']);
 
 
