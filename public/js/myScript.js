@@ -127,13 +127,13 @@ function loadLast_n_HoursData(nHours = 4) {
     // var x = new Date().getTime();
     console.log("n hours = " + nHours);
 
-    var y = parseInt(this.responseText);
+    var co2_latest = parseInt(this.responseText);
     console.log("whole reponse text ");
     console.log(this.responseText);
     //get the co2 reading in var
     var json = JSON.parse(this.response);
     var data_array = []; //.co2;
-    data_array = json.data; //.co2;
+    data_array = json; //.co2;
     console.log("data_array");
     console.log(data_array);
 
@@ -149,17 +149,17 @@ function loadLast_n_HoursData(nHours = 4) {
     // x=dt;
     // var x = new Date(dt).getTime();
     // console.log(x);
-    y = parseInt(co2_reading);
+    co2_latest = parseInt(co2_reading);
 
-    document.getElementById("meter_value").value = y;
+    document.getElementById("meter_value").value = co2_latest;
 
     let str = document.getElementById("co2_level").innerHTML;
     encharloc = str.lastIndexOf(":");
     str.substring(0, encharloc);
     document.getElementById("co2_level").innerHTML =
-      str.substring(0, encharloc + 2) + y;
+      str.substring(0, encharloc + 2) + co2_latest;
 
-    document.getElementById("co2_level").innerHTML = y;
+    document.getElementById("co2_level").innerHTML = co2_latest;
 
     document.getElementById("temperature_level").innerHTML = temp;
 
@@ -169,7 +169,7 @@ function loadLast_n_HoursData(nHours = 4) {
 
     var gaugeElement = document.getElementsByTagName("canvas")[0];
 
-    gaugeElement.setAttribute("data-value", y);
+    gaugeElement.setAttribute("data-value", co2_latest);
     var gauge = document.gauges.get("co2-gauge");
     gauge.update();
 
@@ -227,7 +227,7 @@ function loadLast_n_HoursData(nHours = 4) {
   };
   xhttp.open(
     "GET",
-    "/get-n-hours.php?api_key=tPmAT5Ab3j7F9&nHours=" + nHours,
+    "/api/read/lastnhours/" + nHours,
     true
   );
   xhttp.send(); // console.log("new_co2_series");
@@ -242,7 +242,7 @@ function loadData(num_records = 1000) {
   xhttp.onload = function () {
     //   if (this.readyState == 4 && this.status == 200) {
     // var x = new Date().getTime();
-    var y = parseInt(this.responseText);
+    var co2_latest = parseInt(this.responseText);
     console.log("whole reponse text ");
     console.log(this.responseText);
     //get the co2 reading in var
@@ -264,17 +264,17 @@ function loadData(num_records = 1000) {
     // x=dt;
     // var x = new Date(dt).getTime();
     // console.log(x);
-    y = parseInt(co2_reading);
+    co2_latest = parseInt(co2_reading);
 
-    document.getElementById("meter_value").value = y;
+    document.getElementById("meter_value").value = co2_latest;
 
     let str = document.getElementById("co2_level").innerHTML;
     encharloc = str.lastIndexOf(":");
     str.substring(0, encharloc);
     document.getElementById("co2_level").innerHTML =
-      str.substring(0, encharloc + 2) + y;
+      str.substring(0, encharloc + 2) + co2_latest;
 
-    document.getElementById("co2_level").innerHTML = y;
+    document.getElementById("co2_level").innerHTML = co2_latest;
 
     document.getElementById("temperature_level").innerHTML = temp;
 
@@ -284,7 +284,7 @@ function loadData(num_records = 1000) {
 
     var gaugeElement = document.getElementsByTagName("canvas")[0];
 
-    gaugeElement.setAttribute("data-value", y);
+    gaugeElement.setAttribute("data-value", co2_latest);
     var gauge = document.gauges.get("co2-gauge");
     gauge.update();
 
@@ -317,7 +317,7 @@ function loadData(num_records = 1000) {
   };
   xhttp.open(
     "GET",
-    "/get-n-records.php?api_key=tPmAT5Ab3j7F9&num_records=" + num_records,
+    "/api/read/lastnrecords/" + num_records,
     true
   );
   xhttp.send();
@@ -330,42 +330,42 @@ setInterval(function () {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      var x = new Date().getTime();
-      var y = parseInt(this.responseText);
-      console.log("whole reponse text ");
-      console.log(this.responseText);
+      var x;// = new Date().getTime();
+      var co2_latest;// = parseInt(this.responseText);
+      console.log("whole reponse text: ", this.responseText);
       //get the co2 reading in var
-      var json = JSON.parse(this.response);
-      var data_array = json.data; //.co2;
-      console.log(data_array);
+      var jsondata = JSON.parse(this.response);
+      var data_array = jsondata; //.co2;
+      console.log("data array: ", data_array);
       co2_reading = data_array[0].co2;
-      console.log(co2_reading);
+      console.log("co2_reading: ", co2_reading);
       dt = data_array[0].sample_time;
-      console.log(dt);
+      console.log("sample_time: ", dt);
 
       var temp = data_array[0].temp;
       var humidity = data_array[0].humidity;
       // x=dt;
-      (x = new Date(dt).getTime()), console.log(x);
-      y = parseInt(co2_reading);
+      (x = new Date(dt).getTime());
+       console.log("Date(dt).getTime(): ", x);
+      co2_latest = parseInt(co2_reading);
       //get time in a var
 
       if (chartT.series[0].data.length > 2160) {
-        chartT.series[0].addPoint([x, y], true, true, true);
+        chartT.series[0].addPoint([x, co2_latest], true, true, true);
       } else {
-        chartT.series[0].addPoint([x, y], true, false, true);
+        chartT.series[0].addPoint([x, co2_latest], true, false, true);
       }
 
       // var lastPoint = co2series[co2series.length-1][1];
-      document.getElementById("meter_value").value = y;
+      document.getElementById("meter_value").value = co2_latest;
 
       let str = document.getElementById("co2_level").innerHTML;
       encharloc = str.lastIndexOf(":");
       str.substring(0, encharloc);
       document.getElementById("co2_level").innerHTML =
-        str.substring(0, encharloc + 2) + y;
+        str.substring(0, encharloc + 2) + co2_latest;
 
-      document.getElementById("co2_level").innerHTML = y;
+      document.getElementById("co2_level").innerHTML = co2_latest;
 
       document.getElementById("temperature_level").innerHTML = temp;
 
@@ -375,11 +375,11 @@ setInterval(function () {
 
       var gaugeElement = document.getElementsByTagName("canvas")[0];
 
-      gaugeElement.setAttribute("data-value", y);
+      gaugeElement.setAttribute("data-value", co2_latest);
       var gauge = document.gauges.get("co2-gauge");
       gauge.update();
     }
   };
-  xhttp.open("GET", "/get-data.php?api_key=tPmAT5Ab3j7F9", true);
+  xhttp.open("GET", "/api/read/lastnreadings/1", true);
   xhttp.send();
-}, 15000);
+}, 15000);// 15 secs

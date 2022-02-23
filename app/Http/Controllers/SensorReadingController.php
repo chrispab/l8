@@ -34,6 +34,20 @@ class SensorReadingController extends Controller
         return $nHoursReadings;
     }
     /**
+     * Display a listing last n recs.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function nReadings( $nReadings)
+    {
+        $Result = SensorReading::where('sample_time', '>=', Carbon::now()->subHours(10)->toDateTimeString())
+               ->orderByDesc('sample_time')
+               ->limit($nReadings)
+               ->get();
+        return $Result;
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
