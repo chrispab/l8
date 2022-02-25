@@ -17,7 +17,9 @@ docker run --rm \
     composer install --ignore-platform-reqs
 
 
-chris@OX7020:~/example-app$ sail npm run watch
+chris@OX7020:~/example-app$ 
+
+sail npm run watch
 
 
 #xdebug
@@ -64,6 +66,28 @@ SAIL_XDEBUG_MODE=develop,debug
 # SAIL_XDEBUG_CONFIG="client_host=host.docker.internal idekey=VSCODE"
 =============================
 I did a sail build --no-cache after adding SAIL_XDEBUG_MODE=develop,debug to .env and then sail up
+
+
+#add sail to bash alias
+./vendor/bin/sail up
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+https://www.cyberciti.biz/faq/create-permanent-bash-alias-linux-unix/
+
+
+Stop Apache from Starting on Linux
+sudo systemctl disable apache2 && sudo systemctl stop apache2
+
+
+#git configurations
+git config --list
+
+#local folder
+git config user.name "Your Name"
+git config user.email "youremail@yourdomain.com"
+
+#favicon
+https://favicon.io/favicon-generator/
+https://laracasts.com/discuss/channels/laravel/how-to-add-favicon-in-laravel
 
 
 #db models

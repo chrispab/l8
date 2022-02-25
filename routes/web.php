@@ -32,8 +32,10 @@ use App\Http\Controllers\DataImportController;
 # Import controller here
 use App\Http\Controllers\Student;
 
-Route::get("/", [Student::class, "welcome"]);
-
+// Route::get("/", [Student::class, "welcome"]);
+Route::get('/', function () {
+    return view('dashboard');
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

@@ -143,7 +143,7 @@ function loadLast_n_HoursData(nHours = 4) {
     dt = data_array[0].sample_time;
     console.log(dt);
 
-    var temp = data_array[0].temp;
+    var temp = data_array[0].temperature;
     var humidity = data_array[0].humidity;
 
     // x=dt;
