@@ -87,3 +87,6 @@ to read last n samples from co2sensor server api and insert into local db
 http://localhost/fetch/n
 
 sail php artisan make:command GetAndStoreLatestSensorReading
+
+
+sail php artisan schedule:work
