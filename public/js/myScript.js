@@ -342,7 +342,7 @@ setInterval(function () {
       dt = data_array[0].sample_time;
       console.log("sample_time: ", dt);
 
-      var temp = data_array[0].temp;
+      var temp = data_array[0].temperature;
       var humidity = data_array[0].humidity;
       // x=dt;
       (x = new Date(dt).getTime());

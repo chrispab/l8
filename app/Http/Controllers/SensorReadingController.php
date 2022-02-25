@@ -40,8 +40,7 @@ class SensorReadingController extends Controller
      */
     public function nReadings( $nReadings)
     {
-        $Result = SensorReading::where('sample_time', '>=', Carbon::now()->subHours(10)->toDateTimeString())
-               ->orderByDesc('sample_time')
+        $Result = SensorReading::latest('sample_time')
                ->limit($nReadings)
                ->get();
         return $Result;

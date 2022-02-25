@@ -38,13 +38,7 @@ class GetAndStoreLatestSensorReading extends Command
      */
     public function handle()
     {
-        //get latest sample from remote central db
 
-        //get latest local sample
-        //if remote sample time > local sample time:
-            //write remote sample into local db
-            //ret 0
-        //else return 1
         return 0;
     }
 }

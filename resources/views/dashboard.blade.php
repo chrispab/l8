@@ -17,7 +17,7 @@
                     <ul><a href="../api/readings"> link 1 ../api/readings</a></ul>
                     <ul><a href="../fetch/250"> link 1 ../fetch/250</a></ul>
                     <ul><a href="../co2" > link 1 ../co2</a></ul>
-                    {{-- <ul><a href="../api/readings/1" > link 1 ../api/readings/1</a></ul> --}}
+                    <ul><a href="../fetchLatestSample" > ../fetchLatestSample</a></ul>
                 </div>
             </div>
         </div>

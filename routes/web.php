@@ -51,5 +51,6 @@ Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/fetch/{NSamples}', [DataImportController::class, 'fetchLastNSamples']);
 Route::get('/fetch', [DataImportController::class, 'fetchLastNSamples']);
-
+Route::get('/fetchLatestSample', [DataImportController::class, 'fetchLatestSample']);
+// fetchLatestSample
 require __DIR__.'/auth.php';

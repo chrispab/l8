@@ -45,39 +45,56 @@ class DataImportController extends Controller
         }
         return $samples;
     }
-        /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\SensorReading  $sensorReading
      * @return \Illuminate\Http\Response
      */
-    public function getLatestSampleFrom(Request $request, int $NSamples = 15)
+    public static function fetchLatestSample()
     {
-        //clear current data in local db
-        //get data
-        // $NSamples = 15;
+
+
+        //get latest sample from remote central db
         $api_key_value = "tPmAT5Ab3j7F9";
 
         $response = Http::get('http://dotty.dynu.com:8080/get-n-records.php', [
             'api_key' => $api_key_value,
-            'num_records' => $NSamples,
+            'num_records' => 1,
         ]);
-        $samples = json_decode($response->body());
 
-        //put it in the local db
-        $samples = $samples->data;
+        $boid = $response->body();
+        $remoteDBsample = json_decode($response->body());
+        $remoteDBsample = $remoteDBsample->data;
 
-        SensorReading::truncate();
+        //get latest local sample
+        $localDBsample = SensorReading::orderByDesc('sample_time')->limit(1)->get();
 
-        foreach ($samples as $sample) {
+        //if remote sample time > local sample time:
+        //write remote sample into local db
+        //ret 0
+        //else return 1
+        // $r=$remoteDBsample->sample_time;
+        // print_r($remoteDBsample);die();
+        foreach ($localDBsample as $flight) {
+            $qwwer =  $flight->sample_time;
+        }
+        $resdre = $remoteDBsample[0]->sample_time;
+        // $resdre=$remoteDBsample['sample_time'];
+
+        $zfgfg = $localDBsample[0]->sample_time;
+
+        $remotet = strtotime($remoteDBsample[0]->sample_time);
+        $localt = strtotime($localDBsample[0]->sample_time);
+
+        if ($remotet >  $localt) {
             $sensorReading = new SensorReading;
-            $sensorReading->co2 = $sample->co2;
-            $sensorReading->temperature = $sample->temp;
-            $sensorReading->humidity = $sample->humidity;
-            $sensorReading->sample_time = $sample->sample_time;
+            $sensorReading->co2 = $remoteDBsample[0]->co2;
+            $sensorReading->temperature = $remoteDBsample[0]->temp;
+            $sensorReading->humidity = $remoteDBsample[0]->humidity;
+            $sensorReading->sample_time = $remoteDBsample[0]->sample_time;
             $sensorReading->save();
         }
-        return $samples;
     }
 }

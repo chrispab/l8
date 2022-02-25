@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Http\Controllers;
+use App\Http\Controllers\DataImportController;
+use App\Http\Controllers\SensorReadingController;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,6 +19,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->command('LatestSensorReading:GetAndStore')->everyMinute();
+        $schedule->call(function () {
+            DataImportController::fetchLatestSample();
+        })->everyMinute();
     }
 
     /**
