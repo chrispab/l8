@@ -305,3 +305,63 @@ meter {
   .slider.round:before {
     border-radius: 50%;
   }
+
+  /* slide-sw */
+  .slide-sw {
+    /* display: flex; */
+    /* gap: 15px; */
+    border: 1px solid rgb(8, 8, 8);
+    /* padding: 1em 1em 2em 1em; */
+    padding: 2em;
+
+    /* margin: 1em 1em 2em 1em; */
+    text-align: center;
+
+  }
+  .sw-txt {
+  display: inline;
+  }
+
+
+
+  .rating {
+    /* display: flex; */
+    /* gap: 15px; */
+    border: 1px solid rgb(8, 8, 8);
+
+
+  }
+
+  .rating label {
+    flex: 1 1 auto;
+    cursor: pointer;
+    margin: 1px;
+    display: block;
+
+  }
+
+  .rating span {
+    background-color: #8e95a2;
+    padding: 4px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border: 1px solid rgb(8, 8, 8);
+
+    /* margin: 5 px; */
+
+  }
+
+  .rating input {
+    display: none;
+    margin: 0px;
+
+  }
+
+  .rating input:checked + span {
+    background-color: blue;
+    color: white;
+  }
+
+
+

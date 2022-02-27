@@ -101,6 +101,53 @@
             <p></p>
 
             <hr />
+
+
+
+
+            <p>Select a time range</p>
+            <div class="rating">
+              <label for="rate-1">
+                <input type="radio" id="rate-1" name="rate" value="1" onclick="loadLast_n_HoursData(1)"/><span>1 Hour</span>
+              </label>
+              <label for="rate-2">
+                <input type="radio" id="rate-2" name="rate" value="2" onclick="loadLast_n_HoursData(2)"/><span>2 hours</span>
+              </label>
+              <label for="rate-3">
+                <input type="radio" id="rate-3" name="rate" value="3" onclick="loadLast_n_HoursData(3)"/><span>3 hours</span>
+              </label>
+              <label for="rate-4">
+                <input type="radio" id="rate-4" name="rate" value="4" onclick="loadLast_n_HoursData(4)"/><span>4 hours</span>
+              </label>
+              <label for="rate-5">
+                <input type="radio" id="rate-5" name="rate" value="8" onclick="loadLast_n_HoursData(8)"/><span>8 hours</span>
+              </label>
+              <label for="rate-6">
+                <input type="radio" id="rate-6" name="rate" value="12" onclick="loadLast_n_HoursData(12)"/><span>12 hours</span>
+              </label>
+              <label for="rate-7">
+                <input type="radio" id="rate-7" name="rate" value="24" onclick="loadLast_n_HoursData(24)"/><span>24 hours</span>
+              </label>
+              <label for="rate-8">
+                <input type="radio" id="rate-8" name="rate" value="48" onclick="loadLast_n_HoursData(48)"/><span>2 day</span>
+              </label>
+              <label for="rate-9">
+                <input type="radio" id="rate-9" name="rate" value="72" onclick="loadLast_n_HoursData(72)"/><span>3 days</span>
+              </label>
+              <label for="rate-10">
+                <input type="radio" id="rate-10" name="rate" value="96" onclick="loadLast_n_HoursData(96)"/><span>4 days</span>
+              </label>
+            </div>
+            <div class="slide-sw">
+                <!-- Rounded switch Slide-->
+                <h2 class="sw-txt">Slide</h2>
+                <label class="switch" for="slide-window">
+                    <input type="checkbox" id="slide-window">
+                    <span class="slider round"></span>
+                </label>
+                <h2 class="sw-txt">Add</h2>
+            </div>
+
             <div class="btn-group">
                 <div>
                     <button class="button" type="button" onclick="loadLast_n_HoursData(1)">1 hour</button>
@@ -132,16 +179,9 @@
                 <div>
                     <button class="button" type="button" onclick="loadLast_n_HoursData(72)">72 hours</button>
                 </div>
-
-            </div>
-            <div>
-                <!-- Rounded switch -->
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
             </div>
         </div>
+
 
     </div>
 

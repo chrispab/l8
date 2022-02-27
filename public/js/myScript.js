@@ -118,10 +118,12 @@ Highcharts.setOptions({
 
 //load last n hours of data
 // var maxCo2 = 0; //to store max co2 reading
+var timeWindowHrs = 1;
 
 loadLast_n_HoursData();
 function loadLast_n_HoursData(nHours = 4) {
     const xhttp = new XMLHttpRequest();
+    timeWindowHrs= nHours;
     xhttp.onload = function () {
         //   if (this.readyState == 4 && this.status == 200) {
         // var x = new Date().getTime();
@@ -341,10 +343,32 @@ setInterval(function () {
 
             //addPoint(options [, redraw] [, shift] [, animation] [, withEvent])
             //shift If true, a point is shifted off the start of the series as one is appended to the end.
-            if (chartT.series[0].data.length > 2160) {//if over n samples already, scroll window
+
+            // if timeof(last data point) - timeof(first data point) > current selected view time AND window slide enabled
+            //      add point with scroll effect
+            // else just add point
+            // firstDataPointTime = new Date(chartT.series[0].data[0]).getTime();
+            firstDataPointTime = chartT.series[0].data[0].x;
+            firstDataPointValue = chartT.series[0].data[0].y;
+            console.log("firstDataPointTime: ", firstDataPointTime);
+            console.log("firstDataPointValue: ", firstDataPointValue);
+            lastDataPointTime = chartT.series[0].data[chartT.series[0].data.length-1].x;
+            lastDataPointValue = chartT.series[0].data[chartT.series[0].data.length-1].y;
+            console.log("lastDataPointTime: ", lastDataPointTime);
+            console.log("lastDataPointValue: ", lastDataPointValue);
+            console.log("timeWindowHrs: ", timeWindowHrs);
+
+            // JavaScript Stores Dates as Milliseconds
+            hours=1;
+            hours = timeWindowHrs;
+            msInNHours = hours*60*60*1000;
+            if( (lastDataPointTime - firstDataPointTime) > msInNHours) {
+            // if (chartT.series[0].data.length > 2160) {//if over n samples already, scroll window
                 chartT.series[0].addPoint([sample_time, co2_latest], true, true, true);
+                console.log("truncate msInNHours: ", msInNHours);
             } else {
                 chartT.series[0].addPoint([sample_time, co2_latest], true, false, true);
+                console.log("add to series: ", msInNHours);
             }
 
             document.getElementById("meter_value").value = co2_latest;
