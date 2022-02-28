@@ -129,7 +129,7 @@
                 <input type="radio" id="rate-7" name="rate" value="24" onclick="loadLast_n_HoursData(24)"/><span>24 hours</span>
               </label>
               <label for="rate-8">
-                <input type="radio" id="rate-8" name="rate" value="48" onclick="loadLast_n_HoursData(48)"/><span>2 day</span>
+                <input type="radio" id="rate-8" name="rate" value="48" onclick="loadLast_n_HoursData(48)"/><span>2 days</span>
               </label>
               <label for="rate-9">
                 <input type="radio" id="rate-9" name="rate" value="72" onclick="loadLast_n_HoursData(72)"/><span>3 days</span>
@@ -140,12 +140,12 @@
             </div>
             <div class="slide-sw">
                 <!-- Rounded switch Slide-->
-                <h2 class="sw-txt">Slide</h2>
+                <h3 class="sw-txt">Slide</h3>
                 <label class="switch" for="slide-window">
                     <input type="checkbox" id="slide-window">
                     <span class="slider round"></span>
                 </label>
-                <h2 class="sw-txt">Add</h2>
+                <h3 class="sw-txt">Add</h3>
             </div>
 
             <div class="btn-group">
