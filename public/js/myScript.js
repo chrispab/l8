@@ -267,6 +267,12 @@ setInterval(function () {
             var temperature_str = data_array[0].temperature;
             var humidity = data_array[0].humidity;
 
+
+            if (document.getElementById('slide-window').checked) {
+                slideFlag = false;
+            } else {
+                slideFlag = true;
+            }
             //addPoint(options [, redraw] [, shift] [, animation] [, withEvent])
             //shift If true, a point is shifted off the start of the series as one is appended to the end.
 
@@ -289,8 +295,8 @@ setInterval(function () {
             msInNHours = hours*60*60*1000;
             if( (lastDataPointTime - firstDataPointTime) > msInNHours) {
             // if (chartT.series[0].data.length > 2160) {//if over n samples already, scroll window
-                chartT.series[0].addPoint([sample_time, co2_latest], true, true, true);
-                console.log("truncate msInNHours: ", msInNHours);
+                chartT.series[0].addPoint([sample_time, co2_latest], true, slideFlag, true);
+                console.log("truncate msInNHours:, slideFlag ", msInNHours);
             } else {
                 chartT.series[0].addPoint([sample_time, co2_latest], true, false, true);
                 console.log("add to series: ", msInNHours);
