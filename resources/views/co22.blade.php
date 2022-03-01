@@ -22,6 +22,8 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="css/mystyle.css">
 
 </head>
@@ -108,88 +110,48 @@
             <p>Select a time range</p>
             <div class="rating">
               <label for="rate-1">
-                <input type="radio" id="rate-1" name="rate" value="1" onclick="loadLast_n_HoursData(1)"/><span>1 Hour</span>
+                <input type="radio" id="rate-1" name="hours" value="1" onclick="loadLast_n_HoursData(1)"/><span>1 Hour</span>
               </label>
               <label for="rate-2">
-                <input type="radio" id="rate-2" name="rate" value="2" onclick="loadLast_n_HoursData(2)"/><span>2 hours</span>
+                <input type="radio" id="rate-2" name="hours" value="2" onclick="loadLast_n_HoursData(2)"/><span>2 hours</span>
               </label>
               <label for="rate-3">
-                <input type="radio" id="rate-3" name="rate" value="3" onclick="loadLast_n_HoursData(3)"/><span>3 hours</span>
+                <input type="radio" id="rate-3" name="hours" value="3" onclick="loadLast_n_HoursData(3)"/><span>3 hours</span>
               </label>
               <label for="rate-4">
-                <input type="radio" id="rate-4" name="rate" value="4" onclick="loadLast_n_HoursData(4)"/><span>4 hours</span>
+                <input type="radio" id="rate-4" name="hours" value="4" onclick="loadLast_n_HoursData(4)"/><span>4 hours</span>
               </label>
               <label for="rate-5">
-                <input type="radio" id="rate-5" name="rate" value="8" onclick="loadLast_n_HoursData(8)"/><span>8 hours</span>
+                <input type="radio" id="rate-5" name="hours" value="8" onclick="loadLast_n_HoursData(8)"/><span>8 hours</span>
               </label>
               <label for="rate-6">
-                <input type="radio" id="rate-6" name="rate" value="12" onclick="loadLast_n_HoursData(12)"/><span>12 hours</span>
+                <input type="radio" id="rate-6" name="hours" value="12" onclick="loadLast_n_HoursData(12)"/><span>12 hours</span>
               </label>
               <label for="rate-7">
-                <input type="radio" id="rate-7" name="rate" value="24" onclick="loadLast_n_HoursData(24)"/><span>24 hours</span>
+                <input type="radio" id="rate-7" name="hours" value="24" onclick="loadLast_n_HoursData(24)"/><span>24 hours</span>
               </label>
               <label for="rate-8">
-                <input type="radio" id="rate-8" name="rate" value="48" onclick="loadLast_n_HoursData(48)"/><span>2 days</span>
+                <input type="radio" id="rate-8" name="hours" value="48" onclick="loadLast_n_HoursData(48)"/><span>2 days</span>
               </label>
               <label for="rate-9">
-                <input type="radio" id="rate-9" name="rate" value="72" onclick="loadLast_n_HoursData(72)"/><span>3 days</span>
+                <input type="radio" id="rate-9" name="hours" value="72" onclick="loadLast_n_HoursData(72)"/><span>3 days</span>
               </label>
               <label for="rate-10">
-                <input type="radio" id="rate-10" name="rate" value="96" onclick="loadLast_n_HoursData(96)"/><span>4 days</span>
+                <input type="radio" id="rate-10" name="hours" value="96" onclick="loadLast_n_HoursData(96)"/><span>4 days</span>
               </label>
             </div>
             <div class="slide-sw">
                 <!-- Rounded switch Slide-->
-                <h3 class="sw-txt">Slide</h3>
+                <span class="sw-txt">Slide</span>
                 <label class="switch" for="slide-window">
                     <input type="checkbox" id="slide-window">
                     <span class="slider round"></span>
                 </label>
-                <h3 class="sw-txt">Add</h3>
-            </div>
-
-            <div class="btn-group">
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(1)">1 hour</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(2)">2 hours</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(3)">3 hours</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(4)">4 hours</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(6)">6 hours</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(8)">8 hours</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(12)">12 hours</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(24)">24 hours</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(48)">48 hours</button>
-                </div>
-                <div>
-                    <button class="button" type="button" onclick="loadLast_n_HoursData(72)">72 hours</button>
-                </div>
+                <span class="sw-txt">Add</span>
             </div>
         </div>
-
-
     </div>
-
-
     <?php echo '<pre>'; ?>
-
-
-
 </body>
 
 <script src="js/myScript.js"></script>

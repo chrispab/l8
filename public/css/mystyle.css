@@ -299,7 +299,7 @@ meter {
 
   /* Rounded sliders */
   .slider.round {
-    border-radius: 34px;
+    border-radius: 40px;
   }
 
   .slider.round:before {
@@ -310,17 +310,21 @@ meter {
   .slide-sw {
     /* display: flex; */
     /* gap: 15px; */
-    border: 1px solid rgb(8, 8, 8);
+    border: 1px solid rgb(14, 214, 47);
     /* padding: 1em 1em 2em 1em; */
-    padding: 2em;
+    padding: 1em;
 
-    /* margin: 1em 1em 2em 1em; */
+    /* margin: 0em 0em 1em 0em; */
     text-align: center;
 
   }
-  .sw-txt {
-  display: inline;
-  }
+  span.sw-txt {
+  display: inline-block;
+    margin: 6px 0px 0px 0px;
+        /* padding: 1em 0em 0em 0em; */
+        border: 1px solid blue;
+
+}
 
 
 

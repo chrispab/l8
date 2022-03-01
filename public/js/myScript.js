@@ -123,11 +123,20 @@ var timeWindowHrs = 1;
 loadLast_n_HoursData();
 function loadLast_n_HoursData(nHours = 4) {
     const xhttp = new XMLHttpRequest();
-    timeWindowHrs= nHours;
     xhttp.onload = function () {
         //   if (this.readyState == 4 && this.status == 200) {
         // var x = new Date().getTime();
-        console.log("n hours = " + nHours);
+        console.log("hours requested passed to func= " + nHours);
+
+
+        hoursFromUI = $("input[name=hours]:checked").val();
+        console.log("value of radio selected in UI: " + hoursFromUI);
+        if (hoursFromUI != null){
+            nHours=hoursFromUI;
+            console.log("hours taken from UI present so using: " + hoursFromUI);
+
+        }
+        timeWindowHrs= nHours;
 
         var co2_latest = parseInt(this.responseText);
         console.log("whole reponse text ");
@@ -232,90 +241,7 @@ function loadLast_n_HoursData(nHours = 4) {
     // console.table(new_co2_series);
 }
 
-//load last n records
-// loadData();
-// load data
-function loadData(num_records = 1000) {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
-        //   if (this.readyState == 4 && this.status == 200) {
-        // var x = new Date().getTime();
-        var co2_latest = parseInt(this.responseText);
-        console.log("whole reponse text ");
-        console.log(this.responseText);
-        //get the co2 reading in var
-        var json = JSON.parse(this.response);
-        var data_array = []; //.co2;
-        data_array = json.data; //.co2;
-        console.log("data_array");
-        console.log(data_array);
 
-        co2_reading = data_array[0].co2;
-        console.log(co2_reading);
-
-        dt = data_array[0].sample_time;
-        console.log(dt);
-
-        var temperature_str = data_array[0].temp;
-        var humidity = data_array[0].humidity;
-
-        // x=dt;
-        // var x = new Date(dt).getTime();
-        // console.log(x);
-        co2_latest = parseInt(co2_reading);
-
-        document.getElementById("meter_value").value = co2_latest;
-
-        let str = document.getElementById("co2_level").innerHTML;
-        encharloc = str.lastIndexOf(":");
-        str.substring(0, encharloc);
-        document.getElementById("co2_level").innerHTML =
-            str.substring(0, encharloc + 2) + co2_latest;
-
-        document.getElementById("co2_level").innerHTML = co2_latest;
-
-        document.getElementById("temperature_level").innerHTML = temperature_str;
-
-        document.getElementById("humidity_level").innerHTML = humidity;
-
-        document.getElementById("time").innerHTML = dt;
-
-        var gaugeElement = document.getElementsByTagName("canvas")[0];
-
-        gaugeElement.setAttribute("data-value", co2_latest);
-        var gauge = document.gauges.get("co2-gauge");
-        gauge.update();
-
-        // co2series =
-        // get apir of nums in 2 element Array
-        // add 2 2 elem array to another main array -series
-
-        var new_co2_series = [];
-        var pair = [];
-
-        data_array.forEach(myFunction);
-        function myFunction(value, index, array) {
-            // txt += value + "<br>";
-            console.log("value");
-            console.log(value);
-            pair = [];
-            pair.push(new Date(value.sample_time).getTime()); //cv top utc
-            pair.push(parseInt(value.co2));
-            console.log("pair");
-            console.log(pair);
-            new_co2_series.push(pair);
-            console.log("new_co2_series");
-            console.log(new_co2_series);
-        }
-
-        //reverse array
-        new_co2_series.reverse();
-        chartT.series[0].setData(new_co2_series, true, true, true);
-        //   }
-    };
-    xhttp.open("GET", "/api/read/lastnrecords/" + num_records, true);
-    xhttp.send();
-}
 // var co2series = [["2021-09-10 16:42:31",695],["2021-09-10 16:42:46",695],["2021-09-10 16:43:01",693]];
 console.log(co2series);
 
@@ -359,7 +285,6 @@ setInterval(function () {
             console.log("timeWindowHrs: ", timeWindowHrs);
 
             // JavaScript Stores Dates as Milliseconds
-            hours=1;
             hours = timeWindowHrs;
             msInNHours = hours*60*60*1000;
             if( (lastDataPointTime - firstDataPointTime) > msInNHours) {
