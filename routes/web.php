@@ -51,6 +51,9 @@ Route::get('/co2', function () {
 Route::get('/co22', function () {
     return view('co22');
 })->name('co22');
+Route::get('/monitor', function () {
+    return view('monitor');
+})->name('monitor');
 
 Route::get('/home', [HomeController::class, 'index']);
 
