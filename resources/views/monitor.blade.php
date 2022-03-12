@@ -26,10 +26,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/new.css">
-    {{-- https://cdn.tailwindcss.com/3.0.12
-    https://cdn.tailwindcss.com/3.0.12
-    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css --}}
+
 </head>
 
 <body class="bg-slate-500">
@@ -40,7 +37,15 @@
             <!-- Logo -->
             <svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 64">
                 <defs>
-                    <style>.cls-1 {fill: #319795;}.cls-2,.cls-4 {fill: #2a344f;}
+                    <style>
+                        .cls-1 {
+                            fill: #319795;
+                        }
+
+                        .cls-2,
+                        .cls-4 {
+                            fill: #2a344f;
+                        }
 
                         .cls-2 {
                             opacity: 0.32;
@@ -130,7 +135,7 @@
 
 
     <div class="flex items-center justify-between p-6 container mx-auto">
-        <div class="column left-side">
+        <div class="column left-side border" >
             <h2>Sensor</h2>
             <canvas id="co2-gauge" data-type="radial-gauge" data-width="250" data-height="250" data-units="CO2 ppm"
                 data-title="false" data-value="500" data-min-value="400" data-max-value="1000"
@@ -146,13 +151,13 @@
                 data-animation-duration="500" data-animated-value="true"></canvas>
         </div>
 
-        <div class="column middle">
+        <div class="column middle border-purple-600" >
             <figure class="highcharts-figure">
                 <div id="container"></div>
             </figure>
         </div>
 
-        <div class="column right-side">
+        <div class="column right-side border">
             <h2>Latest Reading</h2>
             <div>
                 <h3 class="h-inline">CO<sub>2</sub> level(ppm): </h3>
@@ -179,73 +184,91 @@
 
             <hr />
 
-            <p>Select a time range</p>
-            <div class="rating flex flex-col border-2">
+
+            <div class=" border">
+                <p class="m-2">Select a time range</p>
 
 
-                <div class=" -mt-5 gap-2">
-                    <div class="w-full ">
-                        <input class="appearance-none w-32" type="radio" name="hours" id="hours1">
-                        <label for="hours1" class="shadow-xl ring-offset-2 ring-2 rounded-lg h-10 text-gray-900 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border-2 flex " onclick="loadLast_n_HoursData(1)">1 Hour</label>
+
+                <div class=" border m-1">
+                    <div class="w-full p-1">
+                        <input type="radio" class="hidden peer" name="hours" id="hours1">
+                        <label for="hours1"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(1)">1 Hour</label>
                     </div>
-                    <div class="w-full "> <input class="appearance-none " type="radio" name="money" id="money2"> <label for="money2" class="h-10 text-gray-700 font-semibold cursor-pointer transition-all text-sm justify-center items-center w-full border-2 flex ">$50</label> </div>
-                    <div class="w-full "> <input class="appearance-none " type="radio" name="money" id="money3"> <label for="money3" class="h-10 text-gray-700 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border-2 flex ">$25</label> </div>
-                    <div class="w-full "> <input class="appearance-none " type="radio" name="money" id="money4"> <label for="money4" class="h-10 text-gray-700 font-semibold cursor-pointer transition-all text-sm justify-center items-center w-full border-2 flex ">Other</label> </div>
+                    <div class="w-full p-1">
+                        <input class="hidden peer" type="radio" name="hours" id="hours2">
+                        <label for="hours2"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(2)">2 hours</label>
+                    </div>
+                    <div class="w-full p-1">
+                        <input class="hidden peer" type="radio" name="hours" id="hours3">
+                        <label for="hours3"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(3)">3 hours</label>
+                    </div>
+                    <div class="w-full p-1">
+                        <input class="hidden peer" type="radio" name="hours" id="hours4">
+                        <label for="hours4"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(4)">4 hours</label>
+                    </div>
+                    <div class="w-full p-1">
+                        <input type="radio" class="hidden peer" name="hours" id="hours8">
+                        <label for="hours8"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(8)">8 Hours</label>
+                    </div>
+                    <div class="w-full p-1">
+                        <input class="hidden peer" type="radio" name="hours" id="hours12">
+                        <label for="hours12"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(12)">12 hours</label>
+                    </div>
+                    <div class="w-full p-1">
+                        <input class="hidden peer" type="radio" name="hours" id="hours24">
+                        <label for="hours24"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(24)">24 hours</label>
+                    </div>
+                    <div class="w-full p-1">
+                        <input class="hidden peer" type="radio" name="hours" id="hours48">
+                        <label for="hours48"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(48)">2 days</label>
+                    </div>
+                    <div class="w-full p-1">
+                        <input type="radio" class="hidden peer" name="hours" id="hours72">
+                        <label for="hours72"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(72)">3 days</label>
+                    </div>
+                    <div class="w-full p-1">
+                        <input class="hidden peer" type="radio" name="hours" id="hours96">
+                        <label for="hours96"
+                            class="rounded-md h-10 text-gray-900 active:bg-blue-600  focus:bg-blue-600 peer-checked:bg-blue-500 font-semibold text-sm cursor-pointer transition-all justify-center items-center w-full border flex "
+                            onclick="loadLast_n_HoursData(96)">4 days</label>
+                    </div>
+
                 </div>
 
+                <div class="slide-sw">
+                    <!-- Rounded switch Slide-->
+                    <span class="sw-txt">Slide</span>
+                    <label class="switch" for="slide-window">
+                        <input type="checkbox" id="slide-window">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="sw-txt">Add</span>
+                </div>
+
+            </div>
 
 
-                <label for="rate-1" class="inline-flex items-center mt-3">
-                    <input type="radio" class="appearance-none display:none m-0" id="rate-1" name="hours" value="1"
-                        onclick="loadLast_n_HoursData(1)" /><span
-                        class="flex content-center justify-center border-solid">1 Hour</span>
-                </label>
-                <label for="rate-2">
-                    <input type="radio" id="rate-2" name="hours" value="2" onclick="loadLast_n_HoursData(2)" /><span>2
-                        hours</span>
-                </label>
-                <label for="rate-3">
-                    <input type="radio" id="rate-3" name="hours" value="3" onclick="loadLast_n_HoursData(3)" /><span>3
-                        hours</span>
-                </label>
-                <label for="rate-4">
-                    <input type="radio" id="rate-4" name="hours" value="4" onclick="loadLast_n_HoursData(4)" /><span>4
-                        hours</span>
-                </label>
-                <label for="rate-5">
-                    <input type="radio" id="rate-5" name="hours" value="8" onclick="loadLast_n_HoursData(8)" /><span>8
-                        hours</span>
-                </label>
-                <label for="rate-6">
-                    <input type="radio" id="rate-6" name="hours" value="12"
-                        onclick="loadLast_n_HoursData(12)" /><span>12 hours</span>
-                </label>
-                <label for="rate-7">
-                    <input type="radio" id="rate-7" name="hours" value="24"
-                        onclick="loadLast_n_HoursData(24)" /><span>24 hours</span>
-                </label>
-                <label for="rate-8">
-                    <input type="radio" id="rate-8" name="hours" value="48" onclick="loadLast_n_HoursData(48)" /><span>2
-                        days</span>
-                </label>
-                <label for="rate-9">
-                    <input type="radio" id="rate-9" name="hours" value="72" onclick="loadLast_n_HoursData(72)" /><span>3
-                        days</span>
-                </label>
-                <label for="rate-10">
-                    <input type="radio" id="rate-10" name="hours" value="96"
-                        onclick="loadLast_n_HoursData(96)" /><span>4 days</span>
-                </label>
-            </div>
-            <div class="slide-sw">
-                <!-- Rounded switch Slide-->
-                <span class="sw-txt">Slide</span>
-                <label class="switch" for="slide-window">
-                    <input type="checkbox" id="slide-window">
-                    <span class="slider round"></span>
-                </label>
-                <span class="sw-txt">Add</span>
-            </div>
+
+
         </div>
     </div>
     <?php echo '<pre>'; ?>
