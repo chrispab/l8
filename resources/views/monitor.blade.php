@@ -33,44 +33,39 @@
 
 <body class="bg-slate-500">
 
-
     <header>
         <nav class="flex items-center justify-between p-6 container mx-auto">
-
         </nav>
     </header>
 
+    <div class="flex items-center justify-between p-6 container mx-auto border border-red-900">
 
-
-
-    <div class="flex items-center justify-between p-6 container mx-auto border">
         <div class="column left-side border">
-
-            {{-- gauge --}}
-            {{-- <div id="gauge-container" style="width:100%; height:400px;"></div> --}}
-
-
-            <div class="flex items-center justify-center mx-auto border">
-                <h2>Sensor</h2>
-            </div>
-            <canvas id="co2-gauge" data-type="radial-gauge" data-units="ppm" data-title="CO2" data-value="500"
-                data-min-value="400" data-max-value="1000" data-major-ticks="400,500,600,700,800,900,1000"
-                data-minor-ticks="10" data-stroke-ticks="false" data-value-int="1" data-value-dec="0"
-                data-font-value="courier" data-highlights='[
+            <div>
+                <div class="flex items-center justify-center mx-auto border">
+                    <h2>Sensor</h2>
+                </div>
+                {{-- <div> --}}
+                    <canvas id="co2-gauge" data-type="radial-gauge" data-units="ppm" data-title="CO2" data-value="500"
+                        data-min-value="400" data-max-value="1000" data-major-ticks="400,500,600,700,800,900,1000"
+                        data-minor-ticks="10" data-stroke-ticks="false" data-value-int="1" data-value-dec="0"
+                        data-font-value="courier" data-highlights='[
       { "from": 400, "to": 700, "color": "rgba(0,255,0,.5)" },
       { "from": 700, "to": 800, "color": "rgba(255,198,0,.7)" },
       { "from": 800, "to": 1000, "color": "rgba(255,0,0,.5)" }
 
             ]' data-color-plate="#222" data-color-major-ticks="#f5f5f5" data-color-minor-ticks="#ddd"
-                data-color-title="#fff" data-color-units="#ccc" data-color-numbers="#eee"
-                data-color-needle-start="rgba(240, 128, 128, 1)" data-color-needle-end="rgba(255, 160, 122, .9)"
-                data-value-box="true" data-animation-rule="bounce" data-animation-duration="500"
-                data-animated-value="true"></canvas>
+                        data-color-title="#fff" data-color-units="#ccc" data-color-numbers="#eee"
+                        data-color-needle-start="rgba(240, 128, 128, 1)" data-color-needle-end="rgba(255, 160, 122, .9)"
+                        data-value-box="true" data-animation-rule="bounce" data-animation-duration="500"
+                        data-animated-value="true"></canvas>
+                {{-- </div> --}}
+            </div>
         </div>
 
-        <div class="border-red-900 w-full">
+        <div class="border-red-900 w-2/3">
             <figure class="highcharts-figure">
-                <div id="container"  style="height: 600px"  class="m-5"></div>
+                <div id="chart-container" class="m-5"></div>
             </figure>
         </div>
         {{-- style="height: 600px" --}}
@@ -81,8 +76,9 @@
                 <h2>Latest Reading</h2>
             </div>
             <div>
-                <h3 class="inline">CO<sub>2</sub> level(ppm): </h3>
+                <h3 class="inline">CO<sub>2</sub> level: </h3>
                 <h2 class="inline" id="co2_level">value</h2>
+                <h3 class="inline">ppm</h3>
             </div>
             <div>
                 <h4 class="inline">Temperature (C): </h4>
@@ -177,7 +173,7 @@
                 <div class="text-center border-red-500 border p-2 items-center justify-center content-center">
                     <!-- Rounded switch Slide-->
                     {{-- <div> --}}
-                        <span class="sw-txt border border-green-500">Slide</span>
+                    <span class="sw-txt border border-green-500">Slide</span>
                     {{-- </div> --}}
                     {{-- <div class="sw-txt">Slide</div> --}}
 

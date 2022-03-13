@@ -788,6 +788,15 @@ select {
 .w-8 {
   width: 2rem;
 }
+.w-3\/4 {
+  width: 75%;
+}
+.w-1\/2 {
+  width: 50%;
+}
+.w-2\/3 {
+  width: 66.666667%;
+}
 .min-w-full {
   min-width: 100%;
 }

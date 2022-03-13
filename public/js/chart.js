@@ -4,7 +4,7 @@ var co2series = [];
 //define the chart
 var chartT = new Highcharts.Chart({
     chart: {
-        renderTo: "container",
+        renderTo: "chart-container",
         type: "spline",
         zoomType: "x",
         height: (9 / 16) * 100 + "%", // 16:9 ratio

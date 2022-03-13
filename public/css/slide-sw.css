@@ -87,8 +87,10 @@ span.sw-txt {
 
 .highcharts-figure,
 .highcharts-data-table table {
-    min-width: 600px;
-    max-width: 1000px;
+    /* min-width: 300px; */
+    /* max-width: 1000px; */
+    width: 100%;
+
     margin: 1em auto;
 }
 
