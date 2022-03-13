@@ -337,6 +337,18 @@ setInterval(function () {
             gaugeElement.setAttribute("data-value", co2_latest);
             var gauge = document.gauges.get("co2-gauge");
             gauge.update();
+
+
+            // var thechart = document.getElementById("gauge-container");
+            // var thechart=$("#gauge-container").highcharts();
+            // var thechart = document.getElementById("gauge-container").highcharts();
+            var thechartobj = document.getElementById("gauge-container");
+
+            var thechart = Highcharts.charts[thechartobj.getAttribute('data-highcharts-chart')];
+            // var thechart = window.charts["gauge-container"];
+
+            var point = thechart.series[0].points[0];
+            point.update(co2_latest);
         }
     };
     getLatestSample.open("GET", "/api/read/lastnreadings/1", true);
