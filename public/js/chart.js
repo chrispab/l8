@@ -280,7 +280,6 @@ setInterval(function () {
             // if timeof(last data point) - timeof(first data point) > current selected view time AND window slide enabled
             //      add point with scroll effect
             // else just add point
-            // firstDataPointTime = new Date(chartT.series[0].data[0]).getTime();
             const firstDataPointTime = chartT.series[0].data[0].x;
             const firstDataPointValue = chartT.series[0].data[0].y;
             console.log("firstDataPointTime: ", firstDataPointTime);
@@ -297,7 +296,6 @@ setInterval(function () {
             const hours = timeWindowHrs;
             const msInNHours = hours * 60 * 60 * 1000;
             if (lastDataPointTime - firstDataPointTime > msInNHours) {
-                // if (chartT.series[0].data.length > 2160) {//if over n samples already, scroll window
                 chartT.series[0].addPoint(
                     [sample_time, co2_latest],
                     true,
@@ -317,36 +315,18 @@ setInterval(function () {
 
             document.getElementById("meter_value").value = co2_latest;
 
-            // let str = document.getElementById("co2_level").innerHTML;
-            // const encharloc = str.lastIndexOf(":");
-            // str.substring(0, encharloc);
-            // document.getElementById("co2_level").innerHTML =
-            // str.substring(0, encharloc + 2) + co2_latest;
-
             document.getElementById("co2_level").innerHTML = co2_latest;
-
-            document.getElementById("temperature_level").innerHTML =
-                temperature_str;
-
+            document.getElementById("temperature_level").innerHTML = temperature_str;
             document.getElementById("humidity_level").innerHTML = humidity;
-
             document.getElementById("time").innerHTML = sample_time_str;
 
             var gaugeElement = document.getElementsByTagName("canvas")[0];
-
             gaugeElement.setAttribute("data-value", co2_latest);
             var gauge = document.gauges.get("co2-gauge");
             gauge.update();
 
-
-            // var thechart = document.getElementById("gauge-container");
-            // var thechart=$("#gauge-container").highcharts();
-            // var thechart = document.getElementById("gauge-container").highcharts();
             var thechartobj = document.getElementById("gauge-container");
-
             var thechart = Highcharts.charts[thechartobj.getAttribute('data-highcharts-chart')];
-            // var thechart = window.charts["gauge-container"];
-
             var point = thechart.series[0].points[0];
             point.update(co2_latest);
         }

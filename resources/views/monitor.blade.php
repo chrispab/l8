@@ -26,7 +26,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+        {{-- <script src="/js/themes/gray.js"></script> --}}
+        <script src="/js/themes/brand-dark.js"></script>
 
 
 </head>
@@ -46,7 +47,7 @@
                     <h2>Sensor</h2>
                 </div>
                 {{-- <div> --}}
-                <canvas id="co2-gauge" data-type="radial-gauge" data-units="ppm" data-title="CO2" data-value="500"
+                <canvas id="co2-gauge" data-type="radial-gauge" data-units="ppm" data-title="CO2" data-width="250" data-height="250" data-value="500"
                     data-min-value="400" data-max-value="1000" data-major-ticks="400,500,600,700,800,900,1000"
                     data-minor-ticks="10" data-stroke-ticks="false" data-value-int="1" data-value-dec="0"
                     data-font-value="courier" data-highlights='[

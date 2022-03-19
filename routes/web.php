@@ -54,7 +54,9 @@ Route::get('/co22', function () {
 Route::get('/monitor', function () {
     return view('monitor');
 })->name('monitor');
-
+Route::get('/monitorgrid', function () {
+    return view('monitorgrid');
+})->name('monitorgrid');
 Route::get('/home', [HomeController::class, 'index']);
 
 
