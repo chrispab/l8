@@ -41,33 +41,37 @@
         </div>
 
         <div class="left" style="background-color:#aaa;">
-            <h2>Sensor</h2>
-            <canvas id="co2-gauge" data-type="radial-gauge" data-units="ppm" data-title="CO2" data-width="250"
-                data-height="250" data-value="500" data-min-value="400" data-max-value="1000"
-                data-major-ticks="400,500,600,700,800,900,1000" data-minor-ticks="10" data-stroke-ticks="false"
-                data-value-int="1" data-value-dec="0" data-font-value="courier" data-highlights='[
+            <div class="border">
+                <h2>Sensor</h2>
+                <canvas id="co2-gauge" data-type="radial-gauge" data-units="ppm" data-title="CO2" data-width="250"
+                    data-height="250" data-value="500" data-min-value="400" data-max-value="1000"
+                    data-major-ticks="400,500,600,700,800,900,1000" data-minor-ticks="10" data-stroke-ticks="false"
+                    data-value-int="1" data-value-dec="0" data-font-value="courier" data-highlights='[
 { "from": 400, "to": 700, "color": "rgba(0,255,0,.5)" },
 { "from": 700, "to": 800, "color": "rgba(255,198,0,.7)" },
 { "from": 800, "to": 1000, "color": "rgba(255,0,0,.5)" }
 
     ]' data-color-plate="#222" data-color-major-ticks="#f5f5f5" data-color-minor-ticks="#ddd" data-color-title="#fff"
-                data-color-units="#ccc" data-color-numbers="#eee" data-color-needle-start="rgba(240, 128, 128, 1)"
-                data-color-needle-end="rgba(255, 160, 122, .9)" data-value-box="true" data-animation-rule="bounce"
-                data-animation-duration="500" data-animated-value="true"></canvas>
+                    data-color-units="#ccc" data-color-numbers="#eee" data-color-needle-start="rgba(240, 128, 128, 1)"
+                    data-color-needle-end="rgba(255, 160, 122, .9)" data-value-box="true" data-animation-rule="bounce"
+                    data-animation-duration="500" data-animated-value="true"></canvas>
+            </div>
         </div>
 
         <div class="middle " style="background-color:#bbb;">
-            <figure class="highcharts-figure m">
-                <div id="chart-container"></div>
-            </figure>
+            <div class="border w-full">
+                <figure class="highcharts-figure ">
+                    <div id="chart-container"></div>
+                </figure>
+            </div>
 
         </div>
 
 
 
         <div class="right" style="background-color:#ccc;">
-            <div class="w-64">
-                <div class="d border p-3">
+            <div class="border w-64">
+                <div class="border p-3">
                     <div class="flex items-center justify-center mx-auto border">
                         <h2>Latest Reading</h2>
                     </div>

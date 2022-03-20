@@ -1,68 +1,89 @@
 * {
     box-sizing: border-box;
-  }
+}
 
-  body {
+body {
     font-family: Titillium, Arial, Helvetica, sans-serif;
-  }
+}
 
-  /* Style the header */
-  .header {
+/* Style the header */
+.header {
     grid-area: header;
     background-color: #f1f1f1;
     padding: 30px;
     text-align: center;
     font-size: 35px;
-  }
+}
 
-  /* The grid container */
-  .grid-container {
+/* The grid container */
+.grid-container {
     display: grid;
     grid-template-areas:
-      'header header header header header header'
-      'left middle middle middle middle right'
-      'footer footer footer footer footer footer';
+        "header header header header header header"
+        "left middle middle middle middle right"
+        "footer footer footer footer footer footer";
     /* grid-column-gap: 10px; - if you want gap between the columns */
-  }
+    width: 90%;
+    margin: auto;
+}
 
-  .left,
-  .middle,
-  .right {
+.left,
+.middle,
+.right {
     padding: 10px;
     /*height: 300px;  Should be removed. Only for demonstration */
-  }
+}
 
-  /* Style the left column */
-  .left {
+/* Style the left column */
+.left {
     grid-area: left;
-  }
+    display: flex;
+    /* Horizontal and Vertical centering */
+    /* display: grid; */
+    justify-content: center;
+    align-content: center;
+}
 
-  /* Style the middle column */
-  .middle {
+/* Style the middle column */
+.middle {
     grid-area: middle;
-  }
+    display: grid;
+    /* place-self: center;   */
+    /* margin: auto; */
+    /* display: flex; */
+    /* Horizontal and Vertical centering */
+    /* display: grid; */
+    /* justify-content: center;
+    align-content: center; */
+    width: 100%;
+}
 
-  /* Style the right column */
-  .right {
+/* Style the right column */
+.right {
     grid-area: right;
-  }
+    display: flex;
+    /* Horizontal and Vertical centering */
+    /* display: grid; */
+    justify-content: center;
+    align-content: center;
+}
 
-  /* Style the footer */
-  .footer {
+/* Style the footer */
+.footer {
     grid-area: footer;
     background-color: #f1f1f1;
     padding: 30px;
     text-align: center;
-  }
+}
 
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media (max-width: 600px) {
-    .grid-container  {
-      grid-template-areas:
-        'header header header header header header'
-        'left left left left left left'
-        'middle middle middle middle middle middle'
-        'right right right right right right'
-        'footer footer footer footer footer footer';
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-areas:
+            "header header header header header header"
+            "left left left left left left"
+            "middle middle middle middle middle middle"
+            "right right right right right right"
+            "footer footer footer footer footer footer";
     }
-  }
+}
